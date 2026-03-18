@@ -11,12 +11,9 @@ int hex_file(const std::string& file){
     char b3 = fichier.get();
     char b4 = fichier.get();
     int nomber = 0;
-    int address = 16;
-    std::cout << std::setfill('0') << std::setw(8) << nomber << ' ' << std::hex << std::setw(2) << +b1 << ' ' << +b2 << ' ' << +b3 << ' ' << +b4 << '\n';
     while (fichier){
+        std::cout << std::setfill('0') << std::setw(8) << std::dec << nomber << ' ' << std::hex << std::setw(2) << +b1 << ' ' << +b2 << ' ' << +b3 << ' ' << +b4 << std::dec << " | " << b1 << ' ' << b2 << ' ' << b3 << ' ' << b4 << '\n';
         nomber += 16;
-        address += 16;
-        std::cout << std::setfill('0') << std::setw(8) << nomber << ' ' << std::hex << std::setw(2) << +b1 << ' ' << +b2 << ' ' << +b3 << ' ' << +b4 << '\n';
         b1 = fichier.get();
         b2 = fichier.get();
         b3 = fichier.get();
