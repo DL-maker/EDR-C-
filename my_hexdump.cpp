@@ -19,6 +19,7 @@ int hex_file(const std::string& file){
         b2 = fichier.get();
         b3 = fichier.get();
         b4 = fichier.get();
+        char b5 = fichier.get();
     };
 };
 
