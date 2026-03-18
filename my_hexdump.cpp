@@ -10,16 +10,14 @@ int hex_file(const std::string& file){
     char b2 = fichier.get();
     char b3 = fichier.get();
     char b4 = fichier.get();
-    char b5 = fichier.get();
     int nomber = 0;
     while (fichier){
-        std::cout << std::setfill('0') << std::setw(8) << std::dec << nomber << ' ' << std::hex << std::setw(2) << +b1 << ' ' << +b2 << ' ' << +b3 << ' ' << +b4 << ' ' << +b5 << std::dec << " " << b1 << b2 << b3 << b4 << b5 << " " << '\n';
+        std::cout << std::setfill('0') << std::setw(8) << std::dec << nomber << ' ' << std::hex << std::setw(2) << +b1 << ' ' << +b2 << ' ' << +b3 << ' ' << +b4 << ' ' << std::dec << " " << b1 << b2 << b3 << b4 << " " << '\n';
         nomber += 16;
         b1 = fichier.get();
         b2 = fichier.get();
         b3 = fichier.get();
         b4 = fichier.get();
-        char b5 = fichier.get();
     };
 };
 
