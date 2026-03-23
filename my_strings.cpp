@@ -5,23 +5,16 @@
 int ligne_par_ligne(const std::string& fichier) {
     std::ifstream file(fichier.c_str());
     std::string stock;
+    std::string ligne;
+    char caractere;
 
-    if (file.is_open()) {
-        char caractere;
-        int nombre = 0;
-        while (file.get(caractere)) {
-          if (stock.size() < 3){
-            if (caractere >= 0 && caractere <= 127){
-              stock += caractere;
-            }
-          } else {
-            if (caractere >= 0 && caractere <= 127){
-              std::cout << stock;
-            }
-          }
-        }
-        file.close();
+    while (file.get(caractere)) {
+      if (caractere >= 0 && caractere <= 127 ){
+        stock += caractere;
     }
+    std::cout << stock;
+    stock.clear();
+}
     return 0;
 }
 
