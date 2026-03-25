@@ -13,6 +13,7 @@ int recherche(const std::string& pattern, const std::string& file){
             std::cout << ligne << '\n';
         }
     }
+    return 0;
 }
 
 int fichier_existe(const std::string& file) {
