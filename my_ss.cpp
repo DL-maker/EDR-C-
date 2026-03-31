@@ -91,13 +91,9 @@ void parseFile(const std::string &path, const std::string &proto, bool listens) 
             cols.push_back(val);
         }
 
-        if (cols.size() < 4) {
-            continue;
-        }
-
-        std::string local    = cols[1];
-        std::string remote   = cols[2];
-        std::string state    = cols[3];
+        std::string local = cols[1];
+        std::string remote = cols[2];
+        std::string state = cols[3];
         std::string stateStr = tcpState(state);
 
         if (listens && stateStr != "LISTEN") {
@@ -105,17 +101,17 @@ void parseFile(const std::string &path, const std::string &proto, bool listens) 
         }
 
         std::string lip = hexIP(local.substr(0, 8));
-        int lport       = hexPort(local.substr(9));
+        int lport = hexPort(local.substr(9));
         std::string rip = hexIP(remote.substr(0, 8));
-        int rport       = hexPort(remote.substr(9));
+        int rport = hexPort(remote.substr(9));
 
-        std::cout << std::left << "\t\t" << proto << "\t\t" << lip << ":" << lport << "\t\t" << "---->" << "\t" << rip << ":" << rport << stateStr << "\n";
+        std::cout << std::left << "\t\t" << proto << "\t\t" << lip << ":" << lport << "\t\t" << "---->" << "\t\t" << rip << ":" << rport << "\t\t" << stateStr << "\n";
     }
 }
 
 void parseUnix() {
     if (!fichier_existe("/proc/net/unix")) {
-        std::cout << "Le fichier ne peux pas etre ouvert ou n'existe pas" << std::endl;
+        std::cout << "Le fichier unix ne peux pas etre ouvert" << std::endl;
         return;
     }
 
@@ -131,10 +127,7 @@ void parseUnix() {
 int main(int argc, char **argv) {
     parse(argc, argv);
 
-    std::cout << "\t\t" << "Proto" << "\t\t"
-              << "Local Address:Port" << "\t\t"
-              << "Peer Address:Port" << "\t\t"
-              << "State\n";
+    std::cout << "\t\t" << "Proto" << "\t\t" << "Local Address:Port" << "\t\t" << "Peer Address:Port" << "\t\t" << "State\n";
 
     if (tcp) {
         parseFile("/proc/net/tcp", "tcp", listening);
