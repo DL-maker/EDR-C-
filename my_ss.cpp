@@ -36,16 +36,14 @@ void parse(int argc, char **argv) {
     }
 }
 
-std::string hexIP(const std::string &hex_ip) {
-    int ip = 0;
-    std::stringstream ss;
-    ss << std::hex << hex_ip;
-    ss >> ip;
+auto hexIP(const std::string &hex_ip) {
+    unsigned int p, q, r, s;
+    char out[16];
 
-    return std::to_string(ip & 0xFF) + "." +
-           std::to_string((ip >> 8) & 0xFF) + "." +
-           std::to_string((ip >> 16) & 0xFF) + "." +
-           std::to_string((ip >> 24) & 0xFF);
+    sscanf(hex_ip.c_str(), "%2x%2x%2x%2x", &p, &q, &r, &s);
+    sprintf(out, "%u.%u.%u.%u", p, q, r, s);
+
+    return std::string(out);
 }
 
 int hexPort(const std::string &hex_port) {
@@ -56,7 +54,7 @@ int hexPort(const std::string &hex_port) {
     return port;
 }
 
-std::string tcpState(const std::string &state) {
+auto tcpState(const std::string &state) {
     if (state == "01") {
         return "ESTAB";
     }
