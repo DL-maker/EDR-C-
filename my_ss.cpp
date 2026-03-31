@@ -74,7 +74,7 @@ int fichier_existe(const std::string &path) {
 
 void parseFile(const std::string &path, const std::string &proto, bool listens) {
     if (!fichier_existe(path)) {
-        std::cout << "Le fichier ne peux pas etre ouvert ou n'existe pas" << std::endl;
+        std::cout << "Le fichier ne peux pas etre ouvert ou n'existe pas" << path << std::endl;
         return;
     }
 
@@ -84,21 +84,19 @@ void parseFile(const std::string &path, const std::string &proto, bool listens) 
 
     while (std::getline(file, line)) {
         std::istringstream iss(line);
-        std::vector<std::string> cols;
-        std::string val;
 
-        while (iss >> val) {
-            cols.push_back(val);
-        }
+        std::string ligne;
+        std::string local;
+        std::string remote;
+        std::string state;
+        iss >> ligne >> local >> remote >> state;
 
-        std::string local = cols[1];
-        std::string remote = cols[2];
-        std::string state = cols[3];
         std::string stateStr = tcpState(state);
 
-        if (listens && stateStr != "LISTEN") {
-            continue;
-        }
+        if (listens) {
+            if (stateStr != "LISTEN"){
+                continue;
+        }}
 
         std::string lip = hexIP(local.substr(0, 8));
         int lport = hexPort(local.substr(9));
@@ -132,7 +130,7 @@ int main(int argc, char **argv) {
     if (tcp) {
         parseFile("/proc/net/tcp", "tcp", listening);
     }
-    if (udp) {
+    if (udp){
         parseFile("/proc/net/udp", "udp", listening);
     }
     if (unix_sock) {
