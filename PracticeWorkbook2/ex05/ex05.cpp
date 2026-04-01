@@ -1,11 +1,11 @@
 #include <iostream>
 #include "ex05.hpp"
 
-void Inventory::addItem(std::string name, int quantity) {
+auto Inventory::addItem(std::string name, int quantity) {
     _items[name] = quantity;
 }
 
-void Inventory::removeItem(std::string name) {
+auto Inventory::removeItem(std::string name) {
     _items.erase(name);
 }
 
@@ -19,7 +19,7 @@ bool Inventory::hasItem(std::string name) {
     return _items.find(name) != _items.end();
 }
 
-void Inventory::updateQuantity(std::string name, int delta) {
+auto Inventory::updateQuantity(std::string name, int delta) {
     if (_items.find(name) != _items.end())
         _items[name] += delta;
 }
