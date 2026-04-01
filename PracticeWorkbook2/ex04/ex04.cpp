@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ex04.hpp"
 
-void WordCounter::addWord(std::string word) {
+auto WordCounter::addWord(std::string word) {
     _words[word]++;
 }
 
@@ -34,7 +34,7 @@ auto WordCounter::getMostFrequent() {
     return max_word;
 }
 
-void WordCounter::clear() {
+auto WordCounter::clear() {
     _words.clear();
 }
 
