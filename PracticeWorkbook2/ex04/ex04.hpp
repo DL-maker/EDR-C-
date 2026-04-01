@@ -8,10 +8,10 @@ private:
     std::map<std::string, int> _words;
 
 public:
-    void addWord(std::string word);
+    auto addWord(std::string word);
     int getCount(std::string word);
     auto removeWord(std::string word);
     auto display();
     auto getMostFrequent();
-    void clear();
+    auto clear();
 };
