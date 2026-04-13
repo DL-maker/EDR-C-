@@ -11,7 +11,7 @@ public:
     auto addWord(std::string word);
     int getCount(std::string word);
     auto removeWord(std::string word);
-    auto display();
+    void display();
     auto getMostFrequent();
     auto clear();
 };

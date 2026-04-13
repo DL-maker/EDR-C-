@@ -1,28 +1,26 @@
 #include <iostream>
 #include "ex04.hpp"
 
-auto WordCounter::addWord(std::string word) {
+void WordCounter::addWord(std::string word) {
     _words[word]++;
 }
 
 int WordCounter::getCount(std::string word) {
-    if (_words.find(word) == _words.end())
-        return 0;
     return _words[word];
 }
 
-auto WordCounter::removeWord(std::string word) {
-    _words.erase(word);
+void WordCounter::removeWord(std::string word) {
+    _words. (word);
 }
 
-auto WordCounter::display() {
+void WordCounter::display() {
     std::cout << "=== Word Counts ===" << '\n';
-    for (const auto& [word, count] : _words) {
+    for (auto [word, count] : _words) {
         std::cout << word << ": " << count << '\n';
     }
 }
 
-auto WordCounter::getMostFrequent() {
+void WordCounter::getMostFrequent() {
     std::string max_word = "";
     int max = 0;
     for (auto [word, count] : _words) {
@@ -34,7 +32,7 @@ auto WordCounter::getMostFrequent() {
     return max_word;
 }
 
-auto WordCounter::clear() {
+void WordCounter::clear() {
     _words.clear();
 }
 

@@ -12,9 +12,15 @@
 void parse_args(int argc, char* argv[], bool& flag_a, bool& flag_x, bool& flag_u){
     for(int i = 1; i < argc; i++){
         std::string arg = argv[i];
-        if(arg == "a") flag_a = true;
-        if(arg == "x") flag_x = true;
-        if(arg == "u") flag_u = true;
+        if(arg == "a"){
+            flag_a = true;
+        }
+        if(arg == "x"){
+            flag_x = true;
+        }
+        if(arg == "u"){
+            flag_u = true;
+        }
     }
 }
 
@@ -28,7 +34,7 @@ int main(int argc, char* argv[]){
     if(flag_u){
         std::cout << "USER\tPID\t%CPU\t%MEM\tTTY\tSTAT\n";
     } else if(flag_a || flag_x){
-        std::cout << "PID\tTTY\t\tSTAT\tCMD\n";
+    std::cout << "PID\tTTY\t\tSTAT\tCMD\n";
     } else {
         std::cout << "PID\tTTY\tCMD\n";
     }

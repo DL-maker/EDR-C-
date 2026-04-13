@@ -8,11 +8,11 @@ private:
     std::unordered_map<std::string, int> _items;
 
 public:
-    auto addItem(std::string name, int quantity);
-    auto removeItem(std::string name);
+    void addItem(std::string name, int quantity);
+    void removeItem(std::string name);
     int getQuantity(std::string name);
     bool hasItem(std::string name);
-    auto updateQuantity(std::string name, int delta);
-    auto display();
+    int updateQuantity(std::string name, int delta);
+    void display() const;
     int totalItems();
 };

@@ -1,17 +1,18 @@
 #include <iostream>
 #include "ex05.hpp"
 
-auto Inventory::addItem(std::string name, int quantity) {
+void Inventory::addItem(std::string name, int quantity) {
     _items[name] = quantity;
 }
 
-auto Inventory::removeItem(std::string name) {
+void Inventory::removeItem(std::string name) {
     _items.erase(name);
 }
 
 int Inventory::getQuantity(std::string name) {
-    if (_items.find(name) == _items.end())
+    if (_items.find(name) == _items.end()){
         return 0;
+    }
     return _items[name];
 }
 
@@ -19,17 +20,19 @@ bool Inventory::hasItem(std::string name) {
     return _items.find(name) != _items.end();
 }
 
-auto Inventory::updateQuantity(std::string name, int delta) {
-    if (_items.find(name) != _items.end())
-        _items[name] += delta;
+int Inventory::updateQuantity(std::string name, int delta) {
+    if (_items.find(name) == _items.end()){ // iterateur no address
+        return 0;
+    }
+    return _items[name] += delta;
 }
 
-auto Inventory::display() {
+void Inventory::display() const {
     std::cout << "=== Inventory ===" << '\n';
-    for (std::pair<std::string, int> p : _items) {
-        std::cout << p.first << ": " << p.second << '\n';
-    }
-}
+    for ( auto i : _items) {
+        std::cout << i.first << ": " << i.second << '\n';
+    };
+};
 
 int Inventory::totalItems() {
     return _items.size();
@@ -50,6 +53,8 @@ int main() {
     inv.removeItem("banana");
     std::cout << "After removing 'banana':" << '\n';
     inv.display();
+    inv.updateQuantity("banana", -3);
+    inv.getQuantity("banana");
     std::cout << "Total items: " << inv.totalItems() << '\n';
     return 0;
 }

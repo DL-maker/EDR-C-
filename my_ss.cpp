@@ -6,8 +6,8 @@
 #include <iomanip>
 #include <arpa/inet.h>
 
-bool tcp       = false;
-bool udp       = false;
+bool tcp  = false;
+bool udp = false;
 bool unix_sock = false;
 bool listening = false;
 
